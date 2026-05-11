@@ -14,11 +14,3 @@ Backend API for tourism route aggregation.
 ```bash
 uvicorn app.main:app --reload
 
-
-
-
-python -m pytest - ЗАПУСК ТЕСТОВ
-
-venv\Scripts\activate - запуск окружения
-
-uvicorn app.main:app --reload - запуск сервера
