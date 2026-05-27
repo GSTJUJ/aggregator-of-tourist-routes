@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import aggregation
+from app.api.routes import tours
 
 from app.database.database import Base, engine
 
@@ -19,6 +20,7 @@ app = FastAPI()
 
 
 app.include_router(aggregation.router)
+app.include_router(tours.router)
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")

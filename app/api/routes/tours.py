@@ -1,28 +1,27 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+
 from sqlalchemy.orm import Session
 
-from app.database.database import SessionLocal
-from app.models import Tour
+from typing import List
+
+from app.database.database import get_db
+
+from app.schemas.tour import TourResponse
+
+from app.services.tour_service import TourService
+
 
 router = APIRouter()
 
+tour_service = TourService()
 
-@router.get("/tours")
-def get_tours():
-    db: Session = SessionLocal()
 
-    tours = db.query(Tour).all()
+@router.get(
+    "/tours",
+    response_model=List[TourResponse]
+)
+def get_tours(
+    db: Session = Depends(get_db)
+):
 
-    result = []
-
-    for tour in tours:
-        result.append({
-            "tour_id": tour.tour_id,
-            "title": tour.title,
-            "region": tour.region,
-            "price": float(tour.price)
-        })
-
-    db.close()
-
-    return result
+    return tour_service.get_all_tours(db)
