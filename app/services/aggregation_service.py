@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 
-from app.providers.json_provider import JsonProvider
-
 from app.models.tour import Tour
+
+from app.providers.json_provider import JsonProvider
+from app.providers.xml_provider import XmlProvider
 
 
 class AggregationService:
@@ -12,51 +13,58 @@ class AggregationService:
         db: Session
     ):
 
-        provider = JsonProvider()
+        providers = [
 
-        tours = await provider.get_tours()
+            JsonProvider(),
+
+            XmlProvider()
+        ]
 
         added_count = 0
 
-        for item in tours:
+        for provider in providers:
 
-            existing_tour = db.query(Tour).filter(
-                Tour.external_id == item["id"]
-            ).first()
+            tours = await provider.get_tours()
 
-            if existing_tour:
-                continue
+            for item in tours:
 
-            new_tour = Tour(
+                existing_tour = db.query(Tour).filter(
+                    Tour.external_id == item["id"]
+                ).first()
 
-                source="json_provider",
+                if existing_tour:
+                    continue
 
-                external_id=item["id"],
+                new_tour = Tour(
 
-                title=item["title"],
+                    source=provider.__class__.__name__,
 
-                description=item.get("description"),
+                    external_id=item["id"],
 
-                city=item.get("city"),
+                    title=item["title"],
 
-                country=item.get("country"),
+                    description=item.get("description"),
 
-                duration=item.get("duration"),
+                    city=item.get("city"),
 
-                price=item.get("price"),
+                    country=item.get("country"),
 
-                currency=item.get("currency"),
+                    duration=item.get("duration"),
 
-                rating=item.get("rating"),
+                    price=item.get("price"),
 
-                image_url=item.get("image_url"),
+                    currency=item.get("currency"),
 
-                source_url=item.get("source_url")
-            )
+                    rating=item.get("rating"),
 
-            db.add(new_tour)
+                    image_url=item.get("image_url"),
 
-            added_count += 1
+                    source_url=item.get("source_url")
+                )
+
+                db.add(new_tour)
+
+                added_count += 1
 
         db.commit()
 
