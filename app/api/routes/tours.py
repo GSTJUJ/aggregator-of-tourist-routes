@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from sqlalchemy.orm import Session
 
-from app.database import SessionLocal
+from app.database.database import SessionLocal
 from app.models import Tour
 
 router = APIRouter()

@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy import text
 
-from app.database import SessionLocal
+from app.database.database import SessionLocal
 from app.config import SECRET_KEY, ALGORITHM
 
 oauth2_scheme = OAuth2PasswordBearer(

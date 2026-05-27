@@ -1,0 +1,15 @@
+[
+  {
+    "id": "json_1",
+    "title": "Old Riga Walking Tour",
+    "description": "Explore the old city.",
+    "city": "Riga",
+    "country": "Latvia",
+    "price": 25,
+    "currency": "EUR",
+    "duration": "2 hours",
+    "rating": 4.7,
+    "image_url": "https://example.com/image.jpg",
+    "source_url": "https://example.com/tour"
+  }
+]

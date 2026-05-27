@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import HTMLResponse
 from sqlalchemy import text
 
-from app.database import SessionLocal
+from app.database.database import SessionLocal
 
 from app.schemas.user import (
     UserCreate,
