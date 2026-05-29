@@ -17,4 +17,3 @@ class JsonProvider(BaseProvider):
             item["source"] = "json_provider"
 
         return data
-

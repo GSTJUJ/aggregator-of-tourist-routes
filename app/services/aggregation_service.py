@@ -4,6 +4,8 @@ from app.models.tour import Tour
 
 from app.providers.provider_manager import ProviderManager
 
+from app.services.normalization_service import NormalizationService
+
 
 class AggregationService:
 
@@ -20,10 +22,12 @@ class AggregationService:
 
             tours = await provider.get_tours()
 
-            for item in tours:
+            for raw_item in tours:
+
+                item = NormalizationService.normalize(raw_item)
 
                 existing_tour = db.query(Tour).filter(
-                    Tour.external_id == item["id"]
+                    Tour.external_id == item["external_id"]
                 ).first()
 
                 if existing_tour:
@@ -31,9 +35,9 @@ class AggregationService:
 
                 new_tour = Tour(
 
-                    source=provider.__class__.__name__,
+                    source=item["source"],
 
-                    external_id=item["id"],
+                    external_id=item["external_id"],
 
                     title=item["title"],
 
