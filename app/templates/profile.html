@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Личный кабинет | Лина-НСК</title>
+
+  <link rel="stylesheet" href="/static/css/profile.css"/>
+  
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    
+    <div class="logo">
+      <a href="/">
+            <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+        </a>
+    </div>
+
+    <nav class="menu">
+      <a href="#">ЭКСКУРСИИ</a>
+      <a href="#">ДЛЯ ШКОЛ</a>
+      <a href="#">О НАС</a>
+      <a href="#">КОНТАКТЫ</a>
+    </nav>
+
+  </div>
+</header>
+
+<hr class="hero-dashed">
+
+<main>
+  <div class="profile-container">
+    <!-- Левый сайдбар с аватаркой и навигацией -->
+    <aside class="profile-sidebar">
+      <div class="avatar-block">
+        <div class="avatar-frame">
+          <img src="/static/images/Боб.jpg" alt="Аватар пользователя" class="avatar-img">
+          <button class="avatar-edit-btn" aria-label="Изменить аватар">✎</button>
+        </div>
+        <h2 class="user-name">Боб Строитель</h2>
+        <p class="user-role">Любитель экскурсий · 5 поездок</p>
+      </div>
+      <nav class="profile-nav">
+        <a href="#" class="profile-nav-link active">📋 Основное</a>
+        <a href="#" class="profile-nav-link">🎟️ Мои бронирования</a>
+        <a href="#" class="profile-nav-link">❤️ Избранное</a>
+        <a href="#" class="profile-nav-link">⚙️ Настройки</a>
+      </nav>
+    </aside>
+
+    <!-- Правая область контента профиля -->
+    <div class="profile-content">
+      <div class="profile-card">
+        <div class="card-header">
+          <h3>Личная информация</h3>
+          <button class="edit-btn">Редактировать</button>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Имя</span>
+            <span class="info-value">Боб</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Фамилия</span>
+            <span class="info-value">Строитель</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Email</span>
+            <span class="info-value">bob.builder@example.com</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Телефон</span>
+            <span class="info-value">+8 (888) 888-88-88</span>
+          </div>
+          <div class="info-item full-width">
+            <span class="info-label">Город</span>
+            <span class="info-value">Новосибирск</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Последние бронирования / рекомендации -->
+      <div class="recent-bookings">
+        <div class="section-title">
+          <h3>✨ Ближайшие экскурсии</h3>
+          <a href="#" class="show-all">Все брони →</a>
+        </div>
+        <div class="bookings-list">
+          <div class="booking-item">
+            <div class="booking-date">15 мая, 11:00</div>
+            <div class="booking-name">«Научное шоу в Академгородке»</div>
+            <span class="booking-status active">Подтверждено</span>
+          </div>
+          <div class="booking-item">
+            <div class="booking-date">22 мая, 14:30</div>
+            <div class="booking-name">«Живописный Новосибирск + мастер-класс»</div>
+            <span class="booking-status pending">Ожидает оплаты</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Избранные экскурсии в стиле category -->
+      <div class="favourites-section">
+        <div class="section-title">
+          <h3>⭐ Избранные экскурсии</h3>
+          <a href="#" class="show-all">Подробнее →</a>
+        </div>
+        <div class="fav-categories">
+          <div class="category fav-category">
+            <img src="/static/images/idea.png" alt="">
+            <span>Космическая лаборатория</span>
+          </div>
+          <div class="category fav-category">
+            <img src="/static/images/painting.png" alt="">
+            <span>Мастер-класс по гончарству</span>
+          </div>
+          <div class="category fav-category">
+            <img src="/static/images/graduation-cap.png" alt="">
+            <span>История Новониколаевска</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="copyright">
+  <p>© Лина-НСК Агентство экскурсий, 2025</p>
+</div>
