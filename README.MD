@@ -1,6 +1,6 @@
 # Aggregator of Tourist Routes
 
-Backend API for tourism route aggregation.
+API for tourism route aggregation.
 
 ## Stack
 
