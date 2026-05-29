@@ -3,20 +3,20 @@
 
     <tour>
         <external_id>xml_1</external_id>
-        <tour_name>Rome Weekend</tour_name>
-        <location_city>Rome</location_city>
-        <location_country>Italy</location_country>
-        <cost>120.5</cost>
+        <tour_name>Экскурсия в дом пимоката</tour_name>
+        <location_city>Новосибирск</location_city>
+        <location_country>Россия</location_country>
+        <cost>2000</cost>
         <stars>4.6</stars>
     </tour>
 
     <tour>
         <external_id>xml_2</external_id>
-        <tour_name>Berlin экскурсия</tour_name>
-        <location_city>Berlin</location_city>
-        <location_country>Germany</location_country>
-        <cost>89.9</cost>
-        <stars>4.3</stars>
+        <tour_name>Ночная экскурсия в депо новосибирского метрополитена</tour_name>
+        <location_city>Новосибирск</location_city>
+        <location_country>Россия</location_country>
+        <cost>3000</cost>
+        <stars>4.8</stars>
     </tour>
 
 </tours>
