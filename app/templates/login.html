@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход в аккаунт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/login.css"/>
+
+</head>
+<body>
+    <div class="logo-container">
+        <a href="/">
+            <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+        </a>
+    </div>
+
+    <hr class="dashed-line">
+
+    <h2>Вход</h2>
+
+    <form id="loginForm">
+        <input type="email" placeholder="Email" id="email" required>
+        <input type="password" placeholder="Пароль" id="password" required>
+        <button type="submit">Войти</button>
+    </form>
+
+    <p class="register-link">
+        Нет аккаунта? <a href="/register-page">Зарегистрироваться</a>
+    </p>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const data = {
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            };
+
+            try {
+                const response = await fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem("access_token", result.access_token);
+                    alert("Успешный вход!");
+                    window.location.href = "/";
+                } else {
+                    alert(result.detail || "Ошибка входа");
+                }
+            } catch (error) {
+                alert("Ошибка подключения к серверу");
+            }
+        });
+    </script>
+</body>
+</html>
