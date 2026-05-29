@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import aggregation
 from app.api.routes import tours
+from app.api.routes.search import router as search_router
 
 from app.database.database import Base, engine
 
@@ -21,6 +22,7 @@ app = FastAPI()
 
 app.include_router(aggregation.router)
 app.include_router(tours.router)
+app.include_router(search_router)
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
