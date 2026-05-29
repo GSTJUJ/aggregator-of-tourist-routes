@@ -11,5 +11,18 @@
     "rating": 4.7,
     "image_url": "https://example.com/image.jpg",
     "source_url": "https://example.com/tour"
+  },
+  {
+    "id": "json_2",
+    "title": "Paris Night Tour",
+    "description": "See Paris at night.",
+    "city": "Paris",
+    "country": "France",
+    "price": 40,
+    "currency": "EUR",
+    "duration": "3 hours",
+    "rating": 4.9,
+    "image_url": "https://example.com/paris.jpg",
+    "source_url": "https://example.com/paris-tour"
   }
 ]

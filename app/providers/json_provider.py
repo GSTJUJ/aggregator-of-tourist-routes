@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 from app.providers.base_provider import BaseProvider
 
 
@@ -5,52 +8,13 @@ class JsonProvider(BaseProvider):
 
     async def get_tours(self):
 
-        return [
-            {
-                "id": "json_1",
+        json_path = Path("app/data/provider1.json")
 
-                "title": "Old Riga Walking Tour",
+        with open(json_path, encoding="utf-8") as f:
+            data = json.load(f)
 
-                "description": "Explore the old city.",
+        for item in data:
+            item["source"] = "json_provider"
 
-                "city": "Riga",
+        return data
 
-                "country": "Latvia",
-
-                "price": 25,
-
-                "currency": "EUR",
-
-                "duration": "2 hours",
-
-                "rating": 4.7,
-
-                "image_url": "https://example.com/image.jpg",
-
-                "source_url": "https://example.com/tour"
-            },
-
-            {
-                "id": "json_2",
-
-                "title": "Paris Night Tour",
-
-                "description": "See Paris at night.",
-
-                "city": "Paris",
-
-                "country": "France",
-
-                "price": 40,
-
-                "currency": "EUR",
-
-                "duration": "3 hours",
-
-                "rating": 4.9,
-
-                "image_url": "https://example.com/paris.jpg",
-
-                "source_url": "https://example.com/paris-tour"
-            }
-        ]

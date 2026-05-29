@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tours>
+
+    <tour>
+        <external_id>xml_1</external_id>
+        <tour_name>Rome Weekend</tour_name>
+        <location_city>Rome</location_city>
+        <location_country>Italy</location_country>
+        <cost>120.5</cost>
+        <stars>4.6</stars>
+    </tour>
+
+    <tour>
+        <external_id>xml_2</external_id>
+        <tour_name>Berlin экскурсия</tour_name>
+        <location_city>Berlin</location_city>
+        <location_country>Germany</location_country>
+        <cost>89.9</cost>
+        <stars>4.3</stars>
+    </tour>
+
+</tours>

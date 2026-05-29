@@ -2,8 +2,7 @@ from sqlalchemy.orm import Session
 
 from app.models.tour import Tour
 
-from app.providers.json_provider import JsonProvider
-from app.providers.xml_provider import XmlProvider
+from app.providers.provider_manager import ProviderManager
 
 
 class AggregationService:
@@ -13,12 +12,7 @@ class AggregationService:
         db: Session
     ):
 
-        providers = [
-
-            JsonProvider(),
-
-            XmlProvider()
-        ]
+        providers = ProviderManager.get_providers()
 
         added_count = 0
 
