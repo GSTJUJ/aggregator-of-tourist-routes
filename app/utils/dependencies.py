@@ -4,7 +4,7 @@ from jose import JWTError, jwt
 from sqlalchemy import text
 
 from app.database.database import SessionLocal
-from app.config import SECRET_KEY, ALGORITHM
+from app.config import settings
 
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="/login"
@@ -33,8 +33,8 @@ def get_current_user(
     try:
         payload = jwt.decode(
             token,
-            SECRET_KEY,
-            algorithms=[ALGORITHM]
+            settings.secret_key,
+            algorithms=[settings.algorithm]
         )
 
         user_id = payload.get("sub")
@@ -49,7 +49,7 @@ def get_current_user(
 
     result = db.execute(
         text(
-            "SELECT * FROM users WHERE user_id = :user_id"
+            "SELECT * FROM users WHERE id = :user_id"
         ),
         {"user_id": int(user_id)}
     ).fetchone()
