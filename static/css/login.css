@@ -21,17 +21,26 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
-    padding: 1px 22px 197px 10px; /* Уменьшен верхний padding */
+    padding: 28px 20px 80px;
 }
 
 /* Логотип */
 .logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: 39px;
-    margin-top: 0;
+    margin: 0 0 25px;
+}
+
+.logo-container a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo-img {
@@ -43,15 +52,13 @@ body {
 
 /* Пунктирная линия */
 .dashed-line {
-    width: 100vw;
+    align-self: stretch;
+    width: 100%;
     max-width: none;
     border: none;
     border-top: 4px dashed var(--orange);
-    margin: 0 0 58px 0;
+    margin: 0 0 64px;
     opacity: 0.7;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 h2 {
@@ -162,7 +169,7 @@ button:active {
 /* Адаптив для планшетов */
 @media (max-width: 768px) {
     body {
-        padding: 15px 20px 40px 20px; /* Еще меньше верхний отступ на планшетах */
+        padding: 24px 20px 40px;
     }
     
     .logo-img {

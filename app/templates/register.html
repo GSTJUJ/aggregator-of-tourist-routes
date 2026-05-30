@@ -5,12 +5,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/register.css"/>
+    <link rel="stylesheet" href="/static/css/register.css"/>
 </head>
 <body>
     <!-- логотип -->
     <div class="logo-container">
-        <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+        <a href="/">
+            <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+        </a>
     </div>
 
     <!-- Пунктирная линия -->
@@ -28,6 +30,10 @@
         <button type="submit">Зарегистрироваться</button>
     </form>
 
+    <p class="register-link">
+        Есть аккаунт? <a href="/login-page">Войти</a>
+    </p>
+
     <script>
         document.getElementById("registerForm").addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -40,7 +46,7 @@
                 password: document.getElementById("password").value
             };
 
-            const response = await fetch("http://127.0.0.1:8000/register", {
+            const response = await fetch("/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -49,7 +55,14 @@
             });
 
             const result = await response.json();
-            alert(result.message);
+
+            if (response.ok) {
+                localStorage.setItem("access_token", result.access_token);
+                alert(result.message);
+                window.location.href = "/profile";
+            } else {
+                alert(result.detail || "Ошибка регистрации");
+            }
         });
     </script>
 </body>

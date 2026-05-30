@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Экскурсии | Лина-НСК</title>
+
+  <link rel="stylesheet" href="/static/css/excursions.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <div class="logo">
+      <a href="/">
+        <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+      </a>
+    </div>
+
+    <nav class="menu">
+      <a href="/excursions">ЭКСКУРСИИ</a>
+      <a href="#">ДЛЯ ШКОЛ</a>
+      <a href="#">О НАС</a>
+      <a href="#">КОНТАКТЫ</a>
+    </nav>
+
+    <button class="header-btn" id="profileButton">Профиль</button>
+  </div>
+</header>
+
+<hr class="hero-dashed">
+
+<main class="excursions-page">
+  <section class="container excursions-hero">
+    <h1>Экскурсии</h1>
+    <p>Подберите экскурсию по названию, теме или городу</p>
+
+    <form class="search-panel" id="searchForm">
+      <input type="search" id="queryInput" placeholder="Что ищем?">
+      <input type="text" id="cityInput" placeholder="Город">
+      <button type="submit">Найти</button>
+    </form>
+  </section>
+
+  <section class="container results-section">
+    <div class="section-title">
+      <h2>Найденные экскурсии</h2>
+      <span id="resultsCount">0</span>
+    </div>
+
+    <div class="tour-grid" id="tourGrid"></div>
+    <p class="empty-state" id="emptyState">Экскурсии пока не найдены</p>
+  </section>
+</main>
+
+<script>
+  document.getElementById("profileButton").addEventListener("click", () => {
+    window.location.href = localStorage.getItem("access_token")
+      ? "/profile"
+      : "/login-page";
+  });
+
+  const searchForm = document.getElementById("searchForm");
+  const queryInput = document.getElementById("queryInput");
+  const cityInput = document.getElementById("cityInput");
+  const tourGrid = document.getElementById("tourGrid");
+  const emptyState = document.getElementById("emptyState");
+  const resultsCount = document.getElementById("resultsCount");
+
+  function formatPrice(tour) {
+    if (!tour.price) {
+      return "Цена уточняется";
+    }
+
+    return `${Number(tour.price).toLocaleString("ru-RU")} ${tour.currency || "RUB"}`;
+  }
+
+  function createTourCard(tour) {
+    const card = document.createElement("article");
+    card.className = "tour-card";
+
+    card.innerHTML = `
+      <div class="tour-image">
+        ${tour.image_url ? `<img src="${tour.image_url}" alt="">` : `<span>${tour.city || "Экскурсия"}</span>`}
+      </div>
+      <div class="tour-card-body">
+        <div class="tour-meta">
+          <span>${tour.city || "Город не указан"}</span>
+          <span>${tour.rating ? `★ ${tour.rating}` : "Без рейтинга"}</span>
+        </div>
+        <h3>${tour.title}</h3>
+        <p>${tour.description || "Описание скоро появится"}</p>
+        <div class="tour-footer">
+          <strong>${formatPrice(tour)}</strong>
+          <a href="${tour.source_url || "#"}">Подробнее</a>
+        </div>
+      </div>
+    `;
+
+    return card;
+  }
+
+  async function loadTours() {
+    const params = new URLSearchParams();
+    params.set("query", queryInput.value.trim());
+    params.set("city", cityInput.value.trim());
+
+    const response = await fetch(`/search?${params.toString()}`);
+    const tours = await response.json();
+
+    tourGrid.innerHTML = "";
+    resultsCount.textContent = tours.length;
+    emptyState.hidden = tours.length > 0;
+
+    tours.forEach((tour) => {
+      tourGrid.appendChild(createTourCard(tour));
+    });
+  }
+
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    loadTours();
+  });
+
+  loadTours();
+</script>
+</body>
+</html>

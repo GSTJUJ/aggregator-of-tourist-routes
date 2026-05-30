@@ -53,7 +53,7 @@
                 if (response.ok) {
                     localStorage.setItem("access_token", result.access_token);
                     alert("Успешный вход!");
-                    window.location.href = "/";
+                    window.location.href = "/profile";
                 } else {
                     alert(result.detail || "Ошибка входа");
                 }

@@ -22,13 +22,13 @@
     </div>
 
     <nav class="menu">
-      <a href="#">ЭКСКУРСИИ</a>
+      <a href="/excursions">ЭКСКУРСИИ</a>
       <a href="#">ДЛЯ ШКОЛ</a>
       <a href="#">О НАС</a>
-      <a href="#">ККОНТАКТЫ</a>
+      <a href="#">КОНТАКТЫ</a>
     </nav>
 
-    <button class="header-btn">
+    <button class="header-btn" id="profileButton">
       Профиль
     </button>
   </div>
@@ -90,7 +90,7 @@
     </div>
 
     <div class="hero-buttons">
-      <button class="main-btn">
+      <button class="main-btn" id="excursionsButton">
         Подобрать экскурсию ———→ 
       </button>
     </div>
@@ -129,5 +129,16 @@
   </div>
 </section>
 
+<script>
+  document.getElementById("profileButton").addEventListener("click", () => {
+    window.location.href = localStorage.getItem("access_token")
+      ? "/profile"
+      : "/login-page";
+  });
+
+  document.getElementById("excursionsButton").addEventListener("click", () => {
+    window.location.href = "/excursions";
+  });
+</script>
 </body>
 </html>

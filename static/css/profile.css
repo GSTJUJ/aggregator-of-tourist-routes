@@ -36,6 +36,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .logo {
@@ -54,7 +55,9 @@ body {
 .menu {
     display: flex;
     gap: 45px;
-    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .menu a {
@@ -145,6 +148,10 @@ body {
     background: #ffe4cf;
     padding: 4px;
     background-color: #fff2e6;
+}
+
+.avatar-input {
+    display: none !important;
 }
 
 .avatar-edit-btn {

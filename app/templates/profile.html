@@ -24,7 +24,7 @@
     </div>
 
     <nav class="menu">
-      <a href="#">ЭКСКУРСИИ</a>
+      <a href="/excursions">ЭКСКУРСИИ</a>
       <a href="#">ДЛЯ ШКОЛ</a>
       <a href="#">О НАС</a>
       <a href="#">КОНТАКТЫ</a>
@@ -41,16 +41,16 @@
     <aside class="profile-sidebar">
       <div class="avatar-block">
         <div class="avatar-frame">
-          <img src="/static/images/Боб.jpg" alt="Аватар пользователя" class="avatar-img">
-          <button class="avatar-edit-btn" aria-label="Изменить аватар">✎</button>
+          <img src="/static/images/avatar-placeholder.svg" alt="Аватар пользователя" class="avatar-img" id="avatarImage">
+          <button class="avatar-edit-btn" id="avatarEditButton" aria-label="Изменить аватар">✎</button>
+          <input type="file" id="avatarInput" class="avatar-input" accept="image/*" hidden>
         </div>
-        <h2 class="user-name">Боб Строитель</h2>
-        <p class="user-role">Любитель экскурсий · 5 поездок</p>
+        <h2 class="user-name" id="profileFullName">Профиль</h2>
+        <p class="user-role">Любитель экскурсий</p>
       </div>
       <nav class="profile-nav">
         <a href="#" class="profile-nav-link active">📋 Основное</a>
         <a href="#" class="profile-nav-link">🎟️ Мои бронирования</a>
-        <a href="#" class="profile-nav-link">❤️ Избранное</a>
         <a href="#" class="profile-nav-link">⚙️ Настройки</a>
       </nav>
     </aside>
@@ -60,28 +60,28 @@
       <div class="profile-card">
         <div class="card-header">
           <h3>Личная информация</h3>
-          <button class="edit-btn">Редактировать</button>
+          <button class="edit-btn" id="logoutButton">Выйти</button>
         </div>
         <div class="info-grid">
           <div class="info-item">
             <span class="info-label">Имя</span>
-            <span class="info-value">Боб</span>
+            <span class="info-value" id="infoFullName">-</span>
           </div>
           <div class="info-item">
-            <span class="info-label">Фамилия</span>
-            <span class="info-value">Строитель</span>
+            <span class="info-label">Регион</span>
+            <span class="info-value" id="infoRegion">-</span>
           </div>
           <div class="info-item">
             <span class="info-label">Email</span>
-            <span class="info-value">bob.builder@example.com</span>
+            <span class="info-value" id="infoEmail">-</span>
           </div>
           <div class="info-item">
             <span class="info-label">Телефон</span>
-            <span class="info-value">+8 (888) 888-88-88</span>
+            <span class="info-value" id="infoPhone">-</span>
           </div>
           <div class="info-item full-width">
-            <span class="info-label">Город</span>
-            <span class="info-value">Новосибирск</span>
+            <span class="info-label">ID пользователя</span>
+            <span class="info-value" id="infoId">-</span>
           </div>
         </div>
       </div>
@@ -106,28 +106,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Избранные экскурсии в стиле category -->
-      <div class="favourites-section">
-        <div class="section-title">
-          <h3>⭐ Избранные экскурсии</h3>
-          <a href="#" class="show-all">Подробнее →</a>
-        </div>
-        <div class="fav-categories">
-          <div class="category fav-category">
-            <img src="/static/images/idea.png" alt="">
-            <span>Космическая лаборатория</span>
-          </div>
-          <div class="category fav-category">
-            <img src="/static/images/painting.png" alt="">
-            <span>Мастер-класс по гончарству</span>
-          </div>
-          <div class="category fav-category">
-            <img src="/static/images/graduation-cap.png" alt="">
-            <span>История Новониколаевска</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </main>
@@ -135,3 +113,71 @@
 <div class="copyright">
   <p>© Лина-НСК Агентство экскурсий, 2025</p>
 </div>
+
+<script>
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    window.location.href = "/login-page";
+  }
+
+  document.getElementById("logoutButton").addEventListener("click", () => {
+    localStorage.removeItem("access_token");
+    window.location.href = "/";
+  });
+
+  const avatarImage = document.getElementById("avatarImage");
+  const avatarInput = document.getElementById("avatarInput");
+  const savedAvatar = localStorage.getItem("profile_avatar");
+
+  if (savedAvatar) {
+    avatarImage.src = savedAvatar;
+  }
+
+  document.getElementById("avatarEditButton").addEventListener("click", () => {
+    avatarInput.click();
+  });
+
+  avatarInput.addEventListener("change", () => {
+    const file = avatarInput.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      localStorage.setItem("profile_avatar", reader.result);
+      avatarImage.src = reader.result;
+    });
+
+    reader.readAsDataURL(file);
+  });
+
+  async function loadProfile() {
+    const response = await fetch("/me", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      localStorage.removeItem("access_token");
+      window.location.href = "/login-page";
+      return;
+    }
+
+    const user = await response.json();
+    document.getElementById("profileFullName").textContent = user.full_name;
+    document.getElementById("infoFullName").textContent = user.full_name;
+    document.getElementById("infoRegion").textContent = user.region;
+    document.getElementById("infoEmail").textContent = user.email;
+    document.getElementById("infoPhone").textContent = user.phone;
+    document.getElementById("infoId").textContent = user.id;
+  }
+
+  loadProfile();
+</script>
+</body>
+</html>
