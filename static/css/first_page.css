@@ -33,16 +33,16 @@ body{
 }
 
 .nav{
-    display:flex;
+    display:grid;
+    grid-template-columns: 300px 1fr 300px;
     align-items:center;
-    justify-content:space-between;
-    position:relative;
 }
 
 /* Логотип как картинка — заменяем текстовый логотип на изображение */
 .logo {
     display: flex;
     align-items: center;
+    justify-self: start;
     margin-left: -210px;
 }
 
@@ -63,9 +63,7 @@ body{
 .menu{
     display:flex;
     gap:45px;
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
+    justify-self: center;
 }
 
 .menu a{
@@ -87,6 +85,7 @@ body{
     border-radius:14px;
     font-weight:700;
     cursor:pointer;
+    justify-self: end;
     margin-right: -210px;
 }
 

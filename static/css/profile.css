@@ -385,6 +385,16 @@ body {
     flex-direction: column;
     gap: 20px;
 }
+
+.booking-empty {
+    background: #fff9f2;
+    padding: 18px 20px;
+    border-radius: 60px;
+    color: #8b765f;
+    font-weight: 700;
+    text-align: center;
+}
+
 .booking-item {
     display: flex;
     align-items: center;
