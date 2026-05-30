@@ -10,10 +10,12 @@ from app.api.routes import tours
 from app.api.routes.search import router as search_router
 
 from app.database.database import Base, engine
+from app.database.database import SessionLocal
 
 from app.models.user import User
 from app.models.tour import Tour
 from app.models.booking import Booking
+from app.services.aggregation_service import AggregationService
 
 
 Base.metadata.create_all(bind=engine)
@@ -64,6 +66,18 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 templates = Jinja2Templates(directory="app/templates")
+
+
+@app.on_event("startup")
+async def load_initial_tours():
+    db = SessionLocal()
+
+    try:
+        if db.query(Tour).count() == 0:
+            service = AggregationService()
+            await service.aggregate(db)
+    finally:
+        db.close()
 
 
 @app.get("/", response_class=HTMLResponse)

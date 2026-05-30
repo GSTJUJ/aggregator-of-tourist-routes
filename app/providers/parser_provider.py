@@ -15,9 +15,10 @@ class ParserProvider(BaseProvider):
 
         tours = []
 
-        for card in soup.select(".tour-card"):
+        for index, card in enumerate(soup.select(".tour-card"), start=1):
 
             tours.append({
+                "external_id": f"parser_{index}",
                 "name": card.select_one(".name").text,
                 "amount": float(card.select_one(".amount").text),
                 "place": card.select_one(".place").text,

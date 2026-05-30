@@ -29,6 +29,10 @@ class NormalizationService:
                 or "Unknown"
             ),
 
+            "description": data.get("description"),
+
+            "duration": data.get("duration"),
+
             "price": float(
                 data.get("price")
                 or data.get("cost")
@@ -53,5 +57,9 @@ class NormalizationService:
                 data.get("source")
                 or data.get("provider")
                 or "unknown"
-            )
+            ),
+
+            "image_url": data.get("image_url"),
+
+            "source_url": data.get("source_url")
         }
