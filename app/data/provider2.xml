@@ -8,6 +8,9 @@
         <location_country>Россия</location_country>
         <cost>2000</cost>
         <stars>4.6</stars>
+        <description>Погружение в традиционное сибирское ремесло валяния валенок (пимов). Гости узнают историю промысла, увидят процесс ручного изготовления и смогут попробовать себя в роли пимоката.</description>
+        <duration>2 часа</duration>
+        <image_url>/static/images/pimokat_house.png</image_url>
     </tour>
 
     <tour>
@@ -17,6 +20,46 @@
         <location_country>Россия</location_country>
         <cost>3000</cost>
         <stars>4.8</stars>
+        <description>Уникальная ночная экскурсия в электродепо метро. Посещение мотодепо, кабина машиниста, рассказ о ночной жизни метрополитена и редких поездах.</description>
+        <duration>3 часа</duration>
+        <image_url>/static/images/metro_depot_night.png</image_url>
+    </tour>
+
+    <tour>
+        <external_id>xml_3</external_id>
+        <tour_name>Экскурсия на страусиную ферму в Морозово</tour_name>
+        <location_city>Морозово</location_city>
+        <location_country>Россия</location_country>
+        <cost>1500</cost>
+        <stars>4.7</stars>
+        <description>Школьники познакомятся с жизнью страусов, покормят их с рук, узнают о фермерском хозяйстве и примут участие в мастер-классе по росписи страусиных яиц.</description>
+        <duration>2.5 часа</duration>
+        <image_url>/static/images/ostrich_farm.png</image_url>
+        <school>true</school>
+    </tour>
+
+    <tour>
+        <external_id>xml_4</external_id>
+        <tour_name>Сплав по реке Иня на рафтах</tour_name>
+        <location_city>Тогучин</location_city>
+        <location_country>Россия</location_country>
+        <cost>4200</cost>
+        <stars>4.9</stars>
+        <description>Активный отдых для взрослых: 6-километровый сплав по порогам реки Иня, инструктаж по безопасности, обед на берегу и купание в летней воде.</description>
+        <duration>5 часов</duration>
+        <image_url>/static/images/inya_rafting.png</image_url>
+    </tour>
+
+    <tour>
+        <external_id>xml_5</external_id>
+        <tour_name>Тур по «Сибирской Швейцарии»: скалы Петени</tour_name>
+        <location_city>Искитимский район</location_city>
+        <location_country>Россия</location_country>
+        <cost>2800</cost>
+        <stars>4.8</stars>
+        <description>Живописный маршрут по гранитным скалам Петени с видом на Бердский залив. Включает посещение карьеров старого мраморного завода и пикник.</description>
+        <duration>4 часа</duration>
+        <image_url>/static/images/peteni_rocks.png</image_url>
     </tour>
 
 </tours>

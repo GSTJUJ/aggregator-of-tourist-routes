@@ -9,7 +9,7 @@
     "currency": "RUB",
     "duration": "3 часа",
     "rating": 4.7,
-    "image_url": "https://example.com/image.jpg",
+    "image_url": "/static/images/фабричная.png",
     "source_url": "https://example.com/tour"
   },
   {
@@ -22,7 +22,46 @@
     "currency": "RUB",
     "duration": "8 hours",
     "rating": 4.9,
-    "image_url": "https://example.com/paris.jpg",
+    "image_url": "https://imapress.media/wp-content/uploads/2018/07/chatskijtatarin.jpeg",
     "source_url": "https://example.com/paris-tour"
+  },
+  {
+    "id": "json_2",
+    "title": "История сибирской чеканки: Сузунский монетный двор с мастер-классом",
+    "description": "Школьники узнают, как в XVIII веке чеканили сибирскую монету, и сами создадут сувенирную монету под руководством мастера.",
+    "city": "Сузун",
+    "country": "Россия",
+    "price": 1800,
+    "currency": "RUB",
+    "duration": "2.5 часа",
+    "rating": 4.8,
+    "image_url": "/static/images/suzun_mint.png",
+    "source_url": "https://example.com/tour_suzun"
+  },
+  {
+    "id": "json_3",
+    "title": "Научное приключение в Кольцово: микроскопы и биотехнологии",
+    "description": "Экскурсия для школьников в наукоград Кольцово: посещение музея биотехнологий, работа с микроскопом и мастер-класс по выделению ДНК из фруктов.",
+    "city": "Кольцово",
+    "country": "Россия",
+    "price": 2200,
+    "currency": "RUB",
+    "duration": "3 часа",
+    "rating": 4.9,
+    "image_url": "/static/images/koltsovo_lab.png",
+    "source_url": "https://example.com/tour_koltsovo"
+  },
+  {
+    "id": "json_4",
+    "title": "Обское море на байдарках: водный поход с мастер-классом по гребле",
+    "description": "Взрослая экскурсия по Новосибирскому водохранилищу: 2-часовая прогулка на байдарках, обучение технике гребли и пикник на берегу с видом на залив.",
+    "city": "Бердск",
+    "country": "Россия",
+    "price": 3500,
+    "currency": "RUB",
+    "duration": "4 часа",
+    "rating": 4.7,
+    "image_url": "/static/images/ob_sea_kayak.png",
+    "source_url": "https://example.com/tour_obskoe"
   }
 ]
