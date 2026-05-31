@@ -10,7 +10,7 @@
         <stars>4.6</stars>
         <description>Погружение в традиционное сибирское ремесло валяния валенок (пимов). Гости узнают историю промысла, увидят процесс ручного изготовления и смогут попробовать себя в роли пимоката.</description>
         <duration>2 часа</duration>
-        <image_url>/static/images/pimokat_house.png</image_url>
+        <image_url>https://nsknews.info/storage/bitrix/gallery/iblock/c4f/MG_4375_tn.JPG</image_url>
     </tour>
 
     <tour>
@@ -22,7 +22,7 @@
         <stars>4.8</stars>
         <description>Уникальная ночная экскурсия в электродепо метро. Посещение мотодепо, кабина машиниста, рассказ о ночной жизни метрополитена и редких поездах.</description>
         <duration>3 часа</duration>
-        <image_url>/static/images/metro_depot_night.png</image_url>
+        <image_url>https://berdsk-bn.ru/wp-content/uploads/2023/03/Y-tmWiEtTrE-1.jpg</image_url>
     </tour>
 
     <tour>
@@ -34,7 +34,7 @@
         <stars>4.7</stars>
         <description>Школьники познакомятся с жизнью страусов, покормят их с рук, узнают о фермерском хозяйстве и примут участие в мастер-классе по росписи страусиных яиц.</description>
         <duration>2.5 часа</duration>
-        <image_url>/static/images/ostrich_farm.png</image_url>
+        <image_url>https://static.tildacdn.com/tild6236-6637-4935-b663-313637353334/_129.jpg</image_url>
         <school>true</school>
     </tour>
 
@@ -47,7 +47,7 @@
         <stars>4.9</stars>
         <description>Активный отдых для взрослых: 6-километровый сплав по порогам реки Иня, инструктаж по безопасности, обед на берегу и купание в летней воде.</description>
         <duration>5 часов</duration>
-        <image_url>/static/images/inya_rafting.png</image_url>
+        <image_url>https://scc-nsk.ru/images/Foto_novost/2018/bugotak/Fc3Dvwb00vI.jpg</image_url>
     </tour>
 
     <tour>
@@ -59,7 +59,7 @@
         <stars>4.8</stars>
         <description>Живописный маршрут по гранитным скалам Петени с видом на Бердский залив. Включает посещение карьеров старого мраморного завода и пикник.</description>
         <duration>4 часа</duration>
-        <image_url>/static/images/peteni_rocks.png</image_url>
+        <image_url>https://a.d-cd.net/1627476s-1920.jpg</image_url>
     </tour>
 
 </tours>

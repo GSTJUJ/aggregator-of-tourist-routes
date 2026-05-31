@@ -9,7 +9,7 @@
     "currency": "RUB",
     "duration": "3 часа",
     "rating": 4.7,
-    "image_url": "/static/images/фабричная.png",
+    "image_url": "https://domophoto.ru/photo/02/16/61/216618.jpg",
     "source_url": "https://example.com/tour"
   },
   {
@@ -35,7 +35,7 @@
     "currency": "RUB",
     "duration": "2.5 часа",
     "rating": 4.8,
-    "image_url": "/static/images/suzun_mint.png",
+    "image_url": "https://museum.cbr.ru/upload/sprint.editor/4f0/31ljlarmv6lruc7zxo8pm6k37w3xtdzo.png",
     "source_url": "https://example.com/tour_suzun"
   },
   {
@@ -48,7 +48,7 @@
     "currency": "RUB",
     "duration": "3 часа",
     "rating": 4.9,
-    "image_url": "/static/images/koltsovo_lab.png",
+    "image_url": "https://4s-info.ru/wp-content/uploads/sites/2/2024/06/2_4.-Biotehnopark-Koltsovo-4a-800x531.jpg",
     "source_url": "https://example.com/tour_koltsovo"
   },
   {
@@ -61,7 +61,7 @@
     "currency": "RUB",
     "duration": "4 часа",
     "rating": 4.7,
-    "image_url": "/static/images/ob_sea_kayak.png",
+    "image_url": "https://parusaurala.ru/wp-content/uploads/2023/07/obskoe-more-23-4.jpg",
     "source_url": "https://example.com/tour_obskoe"
   }
 ]
