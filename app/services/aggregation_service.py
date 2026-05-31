@@ -31,6 +31,16 @@ class AggregationService:
                 ).first()
 
                 if existing_tour:
+                    existing_tour.title = item["title"]
+                    existing_tour.description = item.get("description")
+                    existing_tour.city = item.get("city")
+                    existing_tour.country = item.get("country")
+                    existing_tour.duration = item.get("duration")
+                    existing_tour.price = item.get("price")
+                    existing_tour.currency = item.get("currency")
+                    existing_tour.rating = item.get("rating")
+                    existing_tour.image_url = item.get("image_url")
+                    existing_tour.source_url = item.get("source_url")
                     continue
 
                 new_tour = Tour(
