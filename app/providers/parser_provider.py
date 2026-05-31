@@ -22,6 +22,11 @@ class ParserProvider(BaseProvider):
                 "name": card.select_one(".name").text,
                 "amount": float(card.select_one(".amount").text),
                 "place": card.select_one(".place").text,
+                "country": card.select_one(".country").text,
+                "description": card.select_one(".description").text,
+                "money_type": card.select_one(".currency").text,
+                "duration": card.select_one(".duration").text,
+                "image_url": card.select_one(".image_url").text,
                 "provider": "parser_provider"
             })
 
