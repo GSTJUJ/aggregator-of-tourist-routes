@@ -96,3 +96,30 @@ async def excursions_page(request: Request):
         request=request,
         name="excursions.html"
     )
+
+
+@app.get("/schools", response_class=HTMLResponse)
+async def schools_page(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="schools.html"
+    )
+
+
+@app.get("/about", response_class=HTMLResponse)
+async def about_page(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="about.html"
+    )
+
+
+@app.get("/contacts", response_class=HTMLResponse)
+async def contacts_page(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="contacts.html"
+    )
