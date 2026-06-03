@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Контакты | Лина-НСК</title>
+
+  <link rel="stylesheet" href="/static/css/contacts.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <div class="logo">
+      <a href="/">
+        <img src="/static/images/Логотип.png" alt="Лина НСК" class="logo-img">
+      </a>
+    </div>
+
+    <nav class="menu">
+      <a href="/excursions">ЭКСКУРСИИ</a>
+      <a href="/schools">ДЛЯ ШКОЛ</a>
+      <a href="/about">О НАС</a>
+      <a href="/contacts">КОНТАКТЫ</a>
+    </nav>
+
+    <button class="header-btn" id="profileButton">Профиль</button>
+  </div>
+</header>
+
+<hr class="hero-dashed">
+
+<main>
+  <section class="container contacts-hero">
+    <h1>Контакты</h1>
+    <p>Команда проекта и куратор дипломной работы</p>
+  </section>
+
+  <section class="container contacts-grid">
+    <a class="contact-badge" href="https://t.me/Pinchilinb" target="_blank" rel="noopener">
+      <span class="contact-role">Бэкенд</span>
+      <strong>Денис Быков</strong>
+      <span class="contact-link">@Pinchilinb</span>
+    </a>
+
+    <a class="contact-badge" href="https://t.me/AntoniusMMIV" target="_blank" rel="noopener">
+      <span class="contact-role">Фронтенд</span>
+      <strong>Антон Иванкин</strong>
+      <span class="contact-link">@AntoniusMMIV</span>
+    </a>
+
+    <a class="contact-badge" href="https://t.me/sseezov" target="_blank" rel="noopener">
+      <span class="contact-role">Куратор по диплому</span>
+      <strong>Сергей Сизов</strong>
+      <span class="contact-link">@sseezov</span>
+    </a>
+  </section>
+</main>
+
+<script>
+  document.getElementById("profileButton").addEventListener("click", () => {
+    window.location.href = localStorage.getItem("access_token")
+      ? "/profile"
+      : "/login-page";
+  });
+</script>
+</body>
+</html>

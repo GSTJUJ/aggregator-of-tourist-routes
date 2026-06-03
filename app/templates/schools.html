@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Экскурсии | Лина-НСК</title>
+  <title>Для школ | Лина-НСК</title>
 
   <link rel="stylesheet" href="/static/css/excursions.css"/>
+  <link rel="stylesheet" href="/static/css/schools.css"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,26 +35,32 @@
 
 <hr class="hero-dashed">
 
-<main class="excursions-page">
-  <section class="container excursions-hero">
-    <h1>Экскурсии</h1>
-    <p>Подберите экскурсию по названию, теме или городу</p>
+<main class="excursions-page schools-page">
+  <section class="container excursions-hero schools-hero">
+    <h1>Для школ</h1>
+    <p>Экскурсии и мастер-классы для классов, педагогов и школьных групп</p>
 
     <form class="search-panel" id="searchForm">
-      <input type="search" id="queryInput" placeholder="Что ищем?">
+      <input type="search" id="queryInput" placeholder="Тема экскурсии">
       <input type="text" id="cityInput" placeholder="Город">
       <button type="submit">Найти</button>
     </form>
   </section>
 
+  <section class="container school-tags">
+    <span>Познавательные</span>
+    <span>Профориентационные</span>
+    <span>Мастер-классы</span>
+  </section>
+
   <section class="container results-section">
     <div class="section-title">
-      <h2>Найденные экскурсии</h2>
+      <h2>Экскурсии для школьников</h2>
       <span id="resultsCount">0</span>
     </div>
 
     <div class="tour-grid" id="tourGrid"></div>
-    <p class="empty-state" id="emptyState">Экскурсии пока не найдены</p>
+    <p class="empty-state" id="emptyState">Экскурсии для школ пока не найдены</p>
   </section>
 </main>
 
@@ -92,6 +99,45 @@
     return `${Number(tour.price).toLocaleString("ru-RU")} ${tour.currency || "RUB"}`;
   }
 
+  function matchesExtraQuery(tour, query) {
+    if (!query) {
+      return true;
+    }
+
+    const text = [
+      tour.title,
+      tour.description,
+      tour.city,
+      tour.country
+    ].join(" ").toLowerCase();
+
+    return text.includes(query.toLowerCase());
+  }
+
+  function isSchoolTour(tour) {
+    const text = [
+      tour.title,
+      tour.description,
+      tour.city,
+      tour.country
+    ].join(" ").toLowerCase();
+
+    const schoolWords = [
+      "школь",
+      "учен",
+      "класс",
+      "педагог",
+      "профориентац",
+      "наукоград",
+      "музей",
+      "мастер-класс"
+    ];
+    const adultWords = ["взросл"];
+
+    return schoolWords.some((word) => text.includes(word))
+      && !adultWords.some((word) => text.includes(word));
+  }
+
   function createTourCard(tour) {
     const card = document.createElement("article");
     card.className = "tour-card";
@@ -119,29 +165,33 @@
     return card;
   }
 
-  async function loadTours() {
+  async function loadSchoolTours() {
     const params = new URLSearchParams();
-    params.set("query", queryInput.value.trim());
+    params.set("query", "");
     params.set("city", cityInput.value.trim());
 
     const response = await fetch(`/search?${params.toString()}`);
     const tours = await response.json();
+    const filteredTours = tours.filter((tour) => {
+      return isSchoolTour(tour)
+        && matchesExtraQuery(tour, queryInput.value.trim());
+    });
 
     tourGrid.innerHTML = "";
-    resultsCount.textContent = tours.length;
-    emptyState.hidden = tours.length > 0;
+    resultsCount.textContent = filteredTours.length;
+    emptyState.hidden = filteredTours.length > 0;
 
-    tours.forEach((tour) => {
+    filteredTours.forEach((tour) => {
       tourGrid.appendChild(createTourCard(tour));
     });
   }
 
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    loadTours();
+    loadSchoolTours();
   });
 
-  loadTours();
+  loadSchoolTours();
 </script>
 </body>
 </html>

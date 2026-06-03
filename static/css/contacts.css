@@ -1,0 +1,195 @@
+:root {
+    --bg: #FFECD1;
+    --orange: #F95738;
+    --soft-orange: #EE964B;
+    --brown: #64462F;
+    --dark: #3A3A3A;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.header {
+    padding: 25px 0;
+    margin-left: -15px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: -210px;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.menu {
+    display: flex;
+    gap: 45px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: .3s;
+}
+
+.menu a:hover {
+    color: var(--orange);
+}
+
+.header-btn {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 18px 20px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: -210px;
+}
+
+.hero-dashed {
+    width: 100%;
+    border: none;
+    border-top: 4px dashed var(--orange);
+    margin: 15px 0 70px;
+    opacity: 0.7;
+}
+
+.contacts-hero {
+    text-align: center;
+}
+
+.contacts-hero h1 {
+    color: var(--orange);
+    font-size: 84px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.contacts-hero p {
+    margin-top: 14px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.contacts-grid {
+    margin-top: 42px;
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.contact-badge {
+    min-height: 220px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    background: var(--white);
+    border-radius: 35px;
+    text-decoration: none;
+    color: var(--dark);
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 40px -14px rgba(249, 87, 56, 0.25);
+}
+
+.contact-role {
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #fff0e6;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.contact-badge strong {
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.contact-link {
+    color: var(--orange);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .logo {
+        margin-left: 0;
+    }
+
+    .header-btn {
+        margin-right: 0;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contacts-hero h1 {
+        font-size: 54px;
+    }
+}
+
+@media (max-width: 520px) {
+    .contacts-hero h1 {
+        font-size: 38px;
+    }
+
+    .contacts-hero p {
+        font-size: 18px;
+    }
+
+    .contact-badge {
+        min-height: auto;
+        padding: 26px;
+        border-radius: 28px;
+    }
+}
