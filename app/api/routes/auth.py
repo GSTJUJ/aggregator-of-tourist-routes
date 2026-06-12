@@ -5,7 +5,7 @@ from sqlalchemy import inspect, text
 from sqlalchemy.exc import IntegrityError
 
 from app.database.database import SessionLocal
-from app.schemas.user import UserCreate, UserLogin
+from app.schemas.user import UserCreate, UserLogin, UserUpdate
 from app.utils.dependencies import get_current_user
 from app.utils.security import create_access_token, hash_password, verify_password
 
@@ -60,6 +60,71 @@ def me(current_user=Depends(get_current_user)):
         "email": user["email"],
         "region": user.get("region") or "",
     }
+
+
+@router.put("/me")
+def update_me(
+    user_data: UserUpdate,
+    current_user=Depends(get_current_user),
+):
+    db = SessionLocal()
+    user = current_user._mapping
+
+    try:
+        columns = get_user_columns(db)
+        values = {
+            "id": user["id"],
+            "email": user_data.email,
+        }
+
+        updates = ["email = :email"]
+
+        if "full_name" in columns:
+            values["full_name"] = user_data.full_name
+            updates.append("full_name = :full_name")
+        if "phone" in columns:
+            values["phone"] = user_data.phone
+            updates.append("phone = :phone")
+        if "region" in columns:
+            values["region"] = user_data.region
+            updates.append("region = :region")
+        if "username" in columns:
+            values["username"] = user_data.email
+            updates.append("username = :username")
+
+        db.execute(
+            text(f"UPDATE users SET {', '.join(updates)} WHERE id = :id"),
+            values,
+        )
+        db.commit()
+
+        return {
+            "message": "Профиль обновлен",
+            "id": user["id"],
+            "full_name": user_data.full_name,
+            "phone": user_data.phone,
+            "email": user_data.email,
+            "region": user_data.region,
+        }
+
+    except IntegrityError:
+        db.rollback()
+
+        raise HTTPException(
+            status_code=400,
+            detail="Пользователь с таким email уже существует",
+        )
+
+    except Exception as e:
+        db.rollback()
+
+        raise HTTPException(
+            status_code=400,
+            detail=str(e),
+        )
+
+    finally:
+        db.close()
 
 
 @router.post("/register")
