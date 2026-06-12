@@ -129,16 +129,7 @@
   </div>
 </section>
 
-<script>
-  document.getElementById("profileButton").addEventListener("click", () => {
-    window.location.href = localStorage.getItem("access_token")
-      ? "/profile"
-      : "/login-page";
-  });
-
-  document.getElementById("excursionsButton").addEventListener("click", () => {
-    window.location.href = "/excursions";
-  });
-</script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/home.js"></script>
 </body>
 </html>

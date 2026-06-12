@@ -49,9 +49,8 @@
         <p class="user-role">Любитель экскурсий</p>
       </div>
       <nav class="profile-nav">
-        <a href="#" class="profile-nav-link active">📋 Основное</a>
-        <a href="#" class="profile-nav-link dev-action">🎟️ Мои бронирования</a>
-        <a href="#" class="profile-nav-link dev-action">⚙️ Настройки</a>
+        <a href="#" class="profile-nav-link active" id="mainProfileLink">📋 Основное</a>
+        <a href="#" class="profile-nav-link" id="settingsProfileLink">⚙️ Настройки</a>
       </nav>
     </aside>
 
@@ -86,17 +85,31 @@
         </div>
       </div>
 
-
-      <!-- Последние бронирования / рекомендации -->
-      <div class="recent-bookings">
-        <div class="section-title">
-          <h3>✨ Ближайшие экскурсии</h3>
-          <a href="#" class="show-all dev-action">Все брони →</a>
+      <div class="profile-card settings-card" id="settingsCard" hidden>
+        <div class="card-header">
+          <h3>Настройки профиля</h3>
         </div>
-        <div class="bookings-list">
-          <p class="booking-empty">Ближайших экскурсий пока нет</p>
-        </div>
+        <form class="settings-form" id="profileSettingsForm">
+          <label>
+            <span>Имя</span>
+            <input type="text" id="settingsFullName" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" id="settingsEmail" required>
+          </label>
+          <label>
+            <span>Регион</span>
+            <input type="text" id="settingsRegion" required>
+          </label>
+          <label>
+            <span>Телефон</span>
+            <input type="text" id="settingsPhone" required>
+          </label>
+          <button type="submit">Сохранить</button>
+        </form>
       </div>
+
     </div>
   </div>
 </main>
@@ -105,88 +118,6 @@
   <p>© Лина-НСК Агентство экскурсий, 2025</p>
 </div>
 
-<div class="dev-toast" id="devToast">Пока в разработке</div>
-
-<script>
-  const token = localStorage.getItem("access_token");
-
-  if (!token) {
-    window.location.href = "/login-page";
-  }
-
-  document.getElementById("logoutButton").addEventListener("click", () => {
-    localStorage.removeItem("access_token");
-    window.location.href = "/";
-  });
-
-  const avatarImage = document.getElementById("avatarImage");
-  const avatarInput = document.getElementById("avatarInput");
-  const savedAvatar = localStorage.getItem("profile_avatar");
-  const devToast = document.getElementById("devToast");
-  let toastTimer;
-
-  function showDevToast(event) {
-    event.preventDefault();
-    clearTimeout(toastTimer);
-    devToast.classList.add("is-visible");
-
-    toastTimer = setTimeout(() => {
-      devToast.classList.remove("is-visible");
-    }, 2200);
-  }
-
-  document.querySelectorAll(".dev-action").forEach((element) => {
-    element.addEventListener("click", showDevToast);
-  });
-
-  if (savedAvatar) {
-    avatarImage.src = savedAvatar;
-  }
-
-  document.getElementById("avatarEditButton").addEventListener("click", () => {
-    avatarInput.click();
-  });
-
-  avatarInput.addEventListener("change", () => {
-    const file = avatarInput.files[0];
-
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.addEventListener("load", () => {
-      localStorage.setItem("profile_avatar", reader.result);
-      avatarImage.src = reader.result;
-    });
-
-    reader.readAsDataURL(file);
-  });
-
-  async function loadProfile() {
-    const response = await fetch("/me", {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      localStorage.removeItem("access_token");
-      window.location.href = "/login-page";
-      return;
-    }
-
-    const user = await response.json();
-    document.getElementById("profileFullName").textContent = user.full_name;
-    document.getElementById("infoFullName").textContent = user.full_name;
-    document.getElementById("infoRegion").textContent = user.region;
-    document.getElementById("infoEmail").textContent = user.email;
-    document.getElementById("infoPhone").textContent = user.phone;
-    document.getElementById("infoId").textContent = user.id;
-  }
-
-  loadProfile();
-</script>
+<script src="/static/js/profile.js"></script>
 </body>
 </html>

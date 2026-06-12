@@ -78,12 +78,6 @@
   </section>
 </main>
 
-<script>
-  document.getElementById("profileButton").addEventListener("click", () => {
-    window.location.href = localStorage.getItem("access_token")
-      ? "/profile"
-      : "/login-page";
-  });
-</script>
+<script src="/static/js/common.js"></script>
 </body>
 </html>

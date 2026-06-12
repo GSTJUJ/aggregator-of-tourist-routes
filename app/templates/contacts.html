@@ -41,32 +41,20 @@
   </section>
 
   <section class="container contacts-grid">
-    <a class="contact-badge" href="https://t.me/Pinchilinb" target="_blank" rel="noopener">
-      <span class="contact-role">Бэкенд</span>
+    <div class="contact-badge">
       <strong>Денис Быков</strong>
-      <span class="contact-link">@Pinchilinb</span>
-    </a>
+    </div>
 
-    <a class="contact-badge" href="https://t.me/AntoniusMMIV" target="_blank" rel="noopener">
-      <span class="contact-role">Фронтенд</span>
+    <div class="contact-badge">
       <strong>Антон Иванкин</strong>
-      <span class="contact-link">@AntoniusMMIV</span>
-    </a>
+    </div>
 
-    <a class="contact-badge" href="https://t.me/sseezov" target="_blank" rel="noopener">
-      <span class="contact-role">Куратор по диплому</span>
+    <div class="contact-badge">
       <strong>Сергей Сизов</strong>
-      <span class="contact-link">@sseezov</span>
-    </a>
+    </div>
   </section>
 </main>
 
-<script>
-  document.getElementById("profileButton").addEventListener("click", () => {
-    window.location.href = localStorage.getItem("access_token")
-      ? "/profile"
-      : "/login-page";
-  });
-</script>
+<script src="/static/js/common.js"></script>
 </body>
 </html>
