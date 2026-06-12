@@ -135,25 +135,9 @@ body {
     box-shadow: 0 24px 40px -14px rgba(249, 87, 56, 0.25);
 }
 
-.contact-role {
-    width: fit-content;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #fff0e6;
-    color: var(--orange);
-    font-size: 14px;
-    font-weight: 800;
-}
-
 .contact-badge strong {
     font-size: 28px;
     line-height: 1.2;
-}
-
-.contact-link {
-    color: var(--orange);
-    font-size: 18px;
-    font-weight: 700;
 }
 
 @media (max-width: 1000px) {
