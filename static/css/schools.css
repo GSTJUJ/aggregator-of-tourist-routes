@@ -6,24 +6,6 @@
     font-size: 76px;
 }
 
-.school-tags {
-    margin-top: 28px;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    flex-wrap: wrap;
-}
-
-.school-tags span {
-    padding: 14px 24px;
-    border-radius: 999px;
-    background: var(--white);
-    color: var(--orange);
-    font-size: 14px;
-    font-weight: 800;
-    box-shadow: 0 14px 28px rgba(100, 70, 47, 0.06);
-}
-
 @media (max-width: 1000px) {
     .schools-page .container {
         margin-left: auto;
