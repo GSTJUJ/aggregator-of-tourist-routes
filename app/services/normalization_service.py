@@ -10,7 +10,7 @@ class NormalizationService:
                 or data.get("external_id")
                 or data.get("parser_id")
             ),
-
+            
             "title": (
                 data.get("title")
                 or data.get("tour_name")
