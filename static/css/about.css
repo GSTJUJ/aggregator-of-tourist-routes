@@ -186,6 +186,24 @@ body {
     line-height: 1.45;
 }
 
+@media (max-width: 1500px) {
+    .container {
+        width: 94%;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .header-btn {
+        margin-right: 0;
+    }
+
+    .menu {
+        gap: 36px;
+    }
+}
+
 @media (max-width: 1000px) {
     .logo {
         margin-left: 0;

@@ -6,9 +6,21 @@
     font-size: 76px;
 }
 
+@media (max-width: 1700px) {
+    .schools-page .container {
+        margin-left: auto;
+    }
+}
+
 @media (max-width: 1000px) {
     .schools-page .container {
         margin-left: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .schools-page .results-section {
+        margin-top: 34px;
     }
 }
 

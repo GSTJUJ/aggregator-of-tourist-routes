@@ -266,6 +266,34 @@ body {
     text-align: center;
 }
 
+@media (max-width: 1700px) {
+    .container {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 1500px) {
+    .container {
+        width: 94%;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .header-btn {
+        margin-right: 0;
+    }
+
+    .menu {
+        gap: 36px;
+    }
+
+    .tour-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 1000px) {
     .logo {
         margin-left: 0;
@@ -285,6 +313,22 @@ body {
 
     .tour-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .search-panel {
+        padding: 18px;
+        grid-template-columns: 1fr;
+    }
+
+    .search-panel button {
+        width: 100%;
+    }
+
+    .section-title {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }
 

@@ -557,6 +557,46 @@ body {
     font-weight: 500;
 }
 
+@media (max-width: 1500px) {
+    .container {
+        width: 94%;
+    }
+
+    .header {
+        margin-left: 0;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .header-btn {
+        margin-right: 0;
+    }
+
+    .menu {
+        gap: 36px;
+    }
+
+    .profile-container {
+        max-width: 1200px;
+        grid-template-columns: 340px minmax(0, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .profile-container {
+        grid-template-columns: 310px minmax(0, 1fr);
+        gap: 26px;
+    }
+
+    .profile-sidebar,
+    .profile-card {
+        min-height: 390px;
+    }
+}
+
 /* Адаптивность */
 @media (max-width: 1000px) {
     .profile-container {
